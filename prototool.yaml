@@ -1,0 +1,45 @@
+protoc:
+  version: 3.8.0
+excludes:
+  - node_modules
+lint:
+  group: uber2
+  rules:
+    remove:
+      - REQUEST_RESPONSE_NAMES_MATCH_RPC
+      - REQUEST_RESPONSE_TYPES_UNIQUE
+      - MESSAGES_HAVE_SENTENCE_COMMENTS_EXCEPT_REQUEST_RESPONSE_TYPES
+      - FILE_OPTIONS_REQUIRE_CSHARP_NAMESPACE
+      - FILE_OPTIONS_REQUIRE_JAVA_MULTIPLE_FILES
+      - FILE_OPTIONS_REQUIRE_JAVA_OUTER_CLASSNAME
+      - FILE_OPTIONS_REQUIRE_JAVA_PACKAGE
+      - FILE_OPTIONS_REQUIRE_OBJC_CLASS_PREFIX
+      - ENUMS_HAVE_SENTENCE_COMMENTS
+      - RPCS_HAVE_SENTENCE_COMMENTS
+      - SERVICES_HAVE_SENTENCE_COMMENTS
+  # file_header:
+  #   path: ../../LICENSE
+generate:
+  go_options:
+    import_path: github.com/uber/prototool/example/proto
+  plugins:
+    - name: go
+      type: go
+      flags: plugins=grpc
+      output: gen/go
+    - name: php
+      output: gen/php
+      flags: plugins=grpc
+    - name: js
+      output: gen/js
+      flags: import_style=commonjs,binary
+    - name: grpcjs
+      output: gen/js
+      path: ./node_modules/.bin/grpc_tools_node_protoc_plugin
+    - name: ts
+      output: gen/js
+      flags: import_style=commonjs,binary
+      path: ./node_modules/.bin/protoc-gen-ts
+    - name: grpc-web
+      output: gen/web
+      flags: import_style=typescript
