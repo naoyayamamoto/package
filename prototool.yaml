@@ -23,8 +23,8 @@ generate:
   go_options:
     import_path: github.com/uber/prototool/example/proto
   plugins:
-    - name: go
-      type: go
+    - name: gogo
+      type: gogo
       flags: plugins=grpc
       output: gen/go
     - name: php
@@ -33,13 +33,17 @@ generate:
     - name: js
       output: gen/js
       flags: import_style=commonjs,binary
-    - name: grpcjs
-      output: gen/js
-      path: ./node_modules/.bin/grpc_tools_node_protoc_plugin
-    - name: ts
-      output: gen/js
+    - name: js
+      output: gen/node
       flags: import_style=commonjs,binary
-      path: ./node_modules/.bin/protoc-gen-ts
+      path: grpc_node_plugin
+    # - name: grpcjs
+    #   output: gen/js
+    #   path: ./node_modules/.bin/grpc_tools_node_protoc_plugin
+    # - name: ts
+    #   output: gen/js
+    #   flags: import_style=commonjs,binary
+    #   path: ./node_modules/.bin/protoc-gen-ts
     - name: grpc-web
-      output: gen/web
-      flags: import_style=typescript
+      output: gen/js
+      flags: import_style=typescript,mode=grpcwebtext
