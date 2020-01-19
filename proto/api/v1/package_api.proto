@@ -5,7 +5,7 @@ package account.package.api.v1;
 option go_package = "apiv1";
 option php_namespace = "Account\\Package\\Api\\V1";
 
-import "proto/api/v1/package.proto";
+import "api/v1/package.proto";
 
 service PackageAPI {
   rpc GetPackage (PackageRequest) returns (PackageResult);

@@ -37,13 +37,13 @@ generate:
       output: gen/node
       flags: import_style=commonjs,binary
       path: grpc_node_plugin
-    # - name: grpcjs
-    #   output: gen/js
-    #   path: ./node_modules/.bin/grpc_tools_node_protoc_plugin
-    # - name: ts
-    #   output: gen/js
-    #   flags: import_style=commonjs,binary
-    #   path: ./node_modules/.bin/protoc-gen-ts
+    - name: grpcjs
+      output: gen/js
+      path: ./node_modules/.bin/grpc_tools_node_protoc_plugin
+    - name: ts
+      output: gen/js
+      flags: import_style=commonjs,binary
+      path: ./node_modules/.bin/protoc-gen-ts
     - name: grpc-web
       output: gen/js
       flags: import_style=typescript,mode=grpcwebtext
