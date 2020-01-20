@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package package.v1;
+
+option go_package = "package/v1";
+option php_namespace = "Package\\V1";
+
+service PackageAPI {
+  rpc GetPackage (PackageRequest) returns (PackageResult);
+}
+
+// Get packages
+message PackageRequest {
+    string name = 1;
+}
+
+// Return package
+message PackageResult {
+    string domain = 1;
+    Profile profile = 2;
+    // list of packages
+    repeated Package packages = 3;
+}
+
+message Profile {
+  string name = 1;
+  string email = 2;
+}
+
+message Package {
+  string id = 1;
+}

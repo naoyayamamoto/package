@@ -2,4 +2,4 @@
 
 ## Usage
 
-`make generate`
+`make gen`
