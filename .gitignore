@@ -2,3 +2,4 @@ node_modules
 .DS_Store
 dist
 protoc-gen-grpc-web
+.cache
