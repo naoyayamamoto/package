@@ -5,6 +5,8 @@ package package.v1;
 option go_package = "package/v1";
 option php_namespace = "Package\\V1";
 
+import "google/protobuf/timestamp.proto";
+
 service PackageAPI {
   rpc GetPackage (PackageRequest) returns (PackageResult);
 }
@@ -14,19 +16,42 @@ message PackageRequest {
     string name = 1;
 }
 
+enum PackageManager {
+  OTHER = 0;
+  NPM = 1;
+}
+
 // Return package
 message PackageResult {
     string domain = 1;
     Profile profile = 2;
+
+    PackageManager package_manager = 3;
+
     // list of packages
-    repeated Package packages = 3;
+    repeated Package package = 6;
 }
 
 message Profile {
   string name = 1;
   string email = 2;
+  string avatar = 3;
 }
 
 message Package {
   string id = 1;
+  string name = 2;
+  string version = 3;
+  string description = 4;
+  google.protobuf.Timestamp date = 5;
+  repeated string keyword = 6;
+
+  message Links {
+    string package = 1;
+    string homepage = 2;
+    string repository = 3;
+    string bugs = 4;
+  }
+
+  Links links = 7;
 }

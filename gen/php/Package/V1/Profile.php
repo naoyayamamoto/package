@@ -21,6 +21,10 @@ class Profile extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>string email = 2;</code>
      */
     private $email = '';
+    /**
+     * Generated from protobuf field <code>string avatar = 3;</code>
+     */
+    private $avatar = '';
 
     /**
      * Constructor.
@@ -30,6 +34,7 @@ class Profile extends \Google\Protobuf\Internal\Message
      *
      *     @type string $name
      *     @type string $email
+     *     @type string $avatar
      * }
      */
     public function __construct($data = NULL) {
@@ -77,6 +82,28 @@ class Profile extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkString($var, True);
         $this->email = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string avatar = 3;</code>
+     * @return string
+     */
+    public function getAvatar()
+    {
+        return $this->avatar;
+    }
+
+    /**
+     * Generated from protobuf field <code>string avatar = 3;</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setAvatar($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->avatar = $var;
 
         return $this;
     }

@@ -24,11 +24,15 @@ class PackageResult extends \Google\Protobuf\Internal\Message
      */
     private $profile = null;
     /**
+     * Generated from protobuf field <code>.package.v1.PackageManager package_manager = 3;</code>
+     */
+    private $package_manager = 0;
+    /**
      * list of packages
      *
-     * Generated from protobuf field <code>repeated .package.v1.Package packages = 3;</code>
+     * Generated from protobuf field <code>repeated .package.v1.Package package = 6;</code>
      */
-    private $packages;
+    private $package;
 
     /**
      * Constructor.
@@ -38,7 +42,8 @@ class PackageResult extends \Google\Protobuf\Internal\Message
      *
      *     @type string $domain
      *     @type \Package\V1\Profile $profile
-     *     @type \Package\V1\Package[]|\Google\Protobuf\Internal\RepeatedField $packages
+     *     @type int $package_manager
+     *     @type \Package\V1\Package[]|\Google\Protobuf\Internal\RepeatedField $package
      *           list of packages
      * }
      */
@@ -92,27 +97,49 @@ class PackageResult extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * list of packages
-     *
-     * Generated from protobuf field <code>repeated .package.v1.Package packages = 3;</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * Generated from protobuf field <code>.package.v1.PackageManager package_manager = 3;</code>
+     * @return int
      */
-    public function getPackages()
+    public function getPackageManager()
     {
-        return $this->packages;
+        return $this->package_manager;
+    }
+
+    /**
+     * Generated from protobuf field <code>.package.v1.PackageManager package_manager = 3;</code>
+     * @param int $var
+     * @return $this
+     */
+    public function setPackageManager($var)
+    {
+        GPBUtil::checkEnum($var, \Package\V1\PackageManager::class);
+        $this->package_manager = $var;
+
+        return $this;
     }
 
     /**
      * list of packages
      *
-     * Generated from protobuf field <code>repeated .package.v1.Package packages = 3;</code>
+     * Generated from protobuf field <code>repeated .package.v1.Package package = 6;</code>
+     * @return \Google\Protobuf\Internal\RepeatedField
+     */
+    public function getPackage()
+    {
+        return $this->package;
+    }
+
+    /**
+     * list of packages
+     *
+     * Generated from protobuf field <code>repeated .package.v1.Package package = 6;</code>
      * @param \Package\V1\Package[]|\Google\Protobuf\Internal\RepeatedField $var
      * @return $this
      */
-    public function setPackages($var)
+    public function setPackage($var)
     {
         $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::MESSAGE, \Package\V1\Package::class);
-        $this->packages = $arr;
+        $this->package = $arr;
 
         return $this;
     }

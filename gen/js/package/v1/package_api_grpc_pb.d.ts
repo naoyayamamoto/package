@@ -6,6 +6,7 @@
 
 import * as grpc from "grpc";
 import * as package_v1_package_api_pb from "../../package/v1/package_api_pb";
+import * as google_protobuf_timestamp_pb from "google-protobuf/google/protobuf/timestamp_pb";
 
 interface IPackageAPIService extends grpc.ServiceDefinition<grpc.UntypedServiceImplementation> {
     getPackage: IPackageAPIService_IGetPackage;
