@@ -3,12 +3,15 @@
 WEB_GRPC_VERSION=1.0.7
 UNAME=$(shell tr '[A-Z]' '[a-z]' <<<`uname`)
 
-.PHONY: all clean node php web go
+.PHONY: all clean lint node php web go
 
 all: clean node php web go
 
 clean:
 	@rm -rf gen
+
+lint:
+	@docker run --volume "$(pwd):/workspace" --workdir "/workspace" bufbuild/buf check lint
 
 go:
 	@mkdir -p gen/go
