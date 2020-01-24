@@ -5,10 +5,6 @@
     "type": "git",
     "url": "git+https://github.com/naoyayamamoto/package.git"
   },
-  "files": [
-    "gen/node/*",
-    "gen/web/*"
-  ],
   "keywords": [],
   "author": "",
   "license": "ISC",

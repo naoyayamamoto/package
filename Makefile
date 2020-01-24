@@ -14,9 +14,9 @@ lint:
 	@docker run --volume "$(pwd):/workspace" --workdir "/workspace" bufbuild/buf check lint
 
 go:
-	@mkdir -p gen/go
+	@mkdir -p src/go/generate
 	@./node_modules/.bin/grpc_tools_node_protoc \
-	--go_out=plugins=grpc:gen/go \
+	--go_out=plugins=grpc:src/go/generate \
 	--proto_path=proto \
 	`find proto -name *.proto`
 
@@ -24,28 +24,28 @@ node_modules:
 	@npm install
 
 node: node_modules
-	@mkdir -p gen/node
+	@mkdir -p src/node/generate
 	@./node_modules/.bin/grpc_tools_node_protoc \
-	--js_out=import_style=commonjs,binary:gen/node \
-	--ts_out=gen/node \
-	--grpc_out=gen/node \
+	--js_out=import_style=commonjs,binary:src/node/generate \
+	--ts_out=src/node/generate \
+	--grpc_out=src/node/generate \
 	--plugin=protoc-gen-grpc=node_modules/.bin/grpc_tools_node_protoc_plugin \
 	--plugin=protoc-gen-ts=node_modules/.bin/protoc-gen-ts \
 	--proto_path=proto \
 	`find proto -name *.proto`
 
 php: node_modules
-	@mkdir -p gen/php
+	@mkdir -p src/php/generate
 	@./node_modules/.bin/grpc_tools_node_protoc \
-	--php_out=gen/php \
+	--php_out=src/php/generate \
 	--proto_path=proto \
 	`find proto -name *.proto`
 
 web: node_modules protoc-gen-grpc-web
-	@mkdir -p gen/web
+	@mkdir -p src/web/generate
 	@./node_modules/.bin/grpc_tools_node_protoc \
-	--js_out=import_style=commonjs,binary:gen/web \
-	--grpc-web_out=import_style=typescript,mode=grpcwebtext:gen/web \
+	--js_out=import_style=commonjs,binary:src/web/generate \
+	--grpc-web_out=import_style=typescript,mode=grpcwebtext:src/web/generate \
 	--plugin=protoc-gen-grpc-web=./protoc-gen-grpc-web \
 	--proto_path=proto \
 	`find proto -name *.proto`
