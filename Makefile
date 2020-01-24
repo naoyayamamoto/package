@@ -24,11 +24,11 @@ node_modules:
 	@npm install
 
 node: node_modules
-	@mkdir -p gen/js
+	@mkdir -p gen/node
 	@./node_modules/.bin/grpc_tools_node_protoc \
-	--js_out=import_style=commonjs,binary:gen/js \
-	--ts_out=gen/js \
-	--grpc_out=gen/js \
+	--js_out=import_style=commonjs,binary:gen/node \
+	--ts_out=gen/node \
+	--grpc_out=gen/node \
 	--plugin=protoc-gen-grpc=node_modules/.bin/grpc_tools_node_protoc_plugin \
 	--plugin=protoc-gen-ts=node_modules/.bin/protoc-gen-ts \
 	--proto_path=proto \

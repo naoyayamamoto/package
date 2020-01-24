@@ -1,10 +1,14 @@
 {
-  "name": "package",
+  "name": "@package/package",
   "version": "1.0.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/naoyayamamoto/package.git"
   },
+  "files": [
+    "gen/node",
+    "gen/web"
+  ],
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -12,11 +16,7 @@
     "google-protobuf": "^3.11.2",
     "grpc": "^1.24.2",
     "grpc-web": "^1.0.7",
-    "typescript": "^3.7.5",
-    "parcel-bundler": "^1.12.4",
-    "@types/npm-user-packages": "^3.0.0",
-    "npm-user": "^4.1.1",
-    "npm-user-packages": "^3.0.0"
+    "typescript": "^3.7.5"
   },
   "devDependencies": {
     "@types/google-protobuf": "^3.7.2",
