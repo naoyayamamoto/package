@@ -1,17 +1,27 @@
-import { sendUnaryData, ServerUnaryCall, status } from "grpc";
+import {
+  Server,
+  ServerCredentials,
+  sendUnaryData,
+  ServerUnaryCall,
+  status
+} from "grpc";
+import { Timestamp } from "google-protobuf/google/protobuf/timestamp_pb";
 import npmUserPackages from "npm-user-packages";
 import npmUser from "npm-user";
-import { Timestamp } from "google-protobuf/google/protobuf/timestamp_pb";
-import { IPackageAPIServer } from "@package/package/gen/node/package/v1/package_api_grpc_pb";
+
 import {
   PackageRequest,
   PackageResult,
   PackageManager,
   Profile,
   Package
-} from "@package/package/gen/node/package/v1/package_api_pb";
+} from "../generated/package/v1/package_api_pb";
+import {
+  PackageAPIService,
+  IPackageAPIServer
+} from "../generated/package/v1/package_api_grpc_pb";
 
-export class NpmService implements IPackageAPIServer {
+class PackageService implements IPackageAPIServer {
   getPackage(
     call: ServerUnaryCall<PackageRequest>,
     callback: sendUnaryData<PackageResult>
@@ -74,3 +84,11 @@ export class NpmService implements IPackageAPIServer {
     );
   }
 }
+
+(() => {
+  const server = new Server();
+  server.bind(`0.0.0.0:50051`, ServerCredentials.createInsecure());
+  server.addService(PackageAPIService, new PackageService());
+
+  server.start();
+})();
