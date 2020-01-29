@@ -3,4 +3,4 @@ node_modules
 dist
 protoc-gen-grpc-web
 .cache
-bazel-out
+bazel-*

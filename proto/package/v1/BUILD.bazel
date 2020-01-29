@@ -1,0 +1,56 @@
+# load("@io_bazel_rules_go//go:def.bzl", "go_library")
+# load("@io_bazel_rules_go//proto:def.bzl", "go_proto_library")
+load("@rules_proto//proto:defs.bzl", "proto_library")
+
+proto_library(
+    name = "v1_proto",
+    srcs = ["package_api.proto"],
+    visibility = ["//visibility:public"],
+    deps = ["@com_google_protobuf//:timestamp_proto"],
+)
+# load("@build_stack_rules_proto//node:node_proto_compile.bzl", "node_proto_compile")
+# load("@build_stack_rules_proto//node:node_grpc_compile.bzl", "node_grpc_compile")
+# node_grpc_compile(
+#     name = "person_node_library",
+#     deps = [":v1_proto"],
+# )
+
+# go_proto_library(
+#     name = "v1_go_proto",
+#     compilers = ["@io_bazel_rules_go//proto:go_grpc"],
+#     importpath = "package/v1",
+#     proto = ":v1_proto",
+#     visibility = ["//visibility:public"],
+# )
+
+# go_library(
+#     name = "go_default_library",
+#     embed = [":v1_go_proto"],
+#     importpath = "package/v1",
+#     visibility = ["//visibility:public"],
+# )
+
+# load("@build_stack_rules_proto//node:node_grpc_compile.bzl", "node_grpc_compile")
+
+# node_grpc_compile(
+#     name = "test_node_grpc_compile",
+#     deps = [":v1_proto"],
+# )
+# load("@build_stack_rules_proto//node:node_grpc_library.bzl", "node_grpc_library")
+
+# node_grpc_library(
+#     name = "node_grpc",
+#     deps = [":v1_proto"],
+#     visibility = ["//visibility:public"],
+# )
+load("@build_bazel_rules_nodejs//:index.bzl", "npm_package_bin")
+npm_package_bin(
+  name = "php_protoc",
+  package = "grpc-tools",
+  package_bin = "grpc_tools_node_protoc",
+  outs = ["help.txt"],
+  args = [
+    "--php_out=.",
+	  "--proto_path=proto",
+  ],
+)

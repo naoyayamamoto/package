@@ -8,25 +8,3 @@
 # exports_files(["tsconfig.json"], visibility = ["//:__subpackages__"])
 
 package(default_visibility = ["//visibility:public"])
-
-load("@rules_proto//proto:defs.bzl", "proto_library")
-
-proto_library(
-    name = "foo_proto",
-    srcs = ["proto/package/v1/package_api.proto"],
-    deps = [
-        "//bar:bar_proto",
-        "@com_google_protobuf//:any_proto",
-    ],
-    visibility = ["//visibility:public"],
-)
-
-load("@io_bazel_rules_go//proto:def.bzl", "go_proto_library")
-
-go_proto_library(
-    name = "foo_go_proto",
-    # importpath = "example.com/repo/foo",
-    proto = ":foo_proto",
-    visibility = ["//visibility:public"],
-    deps = ["//bar:bar_go_proto"],
-)
