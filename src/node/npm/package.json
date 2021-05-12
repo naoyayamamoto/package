@@ -10,7 +10,7 @@
     "@types/google-protobuf": "^3.7.2",
     "@types/npm-user-packages": "^3.0.0",
     "google-protobuf": "^3.11.2",
-    "grpc": "^1.24.2",
+    "grpc": "^1.24.9",
     "npm-user": "^4.1.1",
     "npm-user-packages": "^3.0.0",
     "typescript": "^3.7.5"
